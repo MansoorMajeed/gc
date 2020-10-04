@@ -16,11 +16,13 @@ var cfgFile string
 var rootCmd = &cobra.Command{
 	Use:   "gc",
 	Short: "Offline Gcloud",
-	Long: `A simple tool to query google cloud VMs offline and quick. Because
-    Running gcloud to fetch the list of VMs for every command might not be the
-    most efficient thing to do.
-    Sometimes you just need to quickly check the IP address of a VM that almost
-    never gets updated. So there is no reason to fetch it live from the GCP`,
+	Long: `A simple tool to query google cloud VMs offline and quick.
+This tool fetches all the information about all the VMs in projects you choose
+and stores locally. This way, you can quickly search through them
+
+Additionally, you can fuzzy search project names and VM details such as name, IP etc
+
+`,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -37,8 +39,6 @@ func init() {
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.gc.yaml)")
 	rootCmd.PersistentFlags().String("project", "", "Name of the project")
-
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 // initConfig reads in config file and ENV variables if set.

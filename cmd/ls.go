@@ -120,12 +120,17 @@ var lsCmd = &cobra.Command{
 	Short:   "list VMs",
 	Aliases: []string{"l"},
 	Long: `List VMs in a project
-Example 1: gc ls infra
-This does a fuzzy search for project with "infra" and lists all the VMs
+
+Example 1:
+==========
+Command: gc ls infra
+Explanation : This does a fuzzy search for project with "infra" and lists all the VMs
 in it.
 
-Example 2: gc ls infra vm-name
-Does kind of a "grep" for vm-names`,
+Example 2:
+=========
+Command: gc ls infra db1
+Explanation: Fuzzy finds the project name and then "db1" in the name, internal/external IP address`,
 	Args: cobra.RangeArgs(1, 2),
 	Run: func(cmd *cobra.Command, args []string) {
 
@@ -152,7 +157,6 @@ Does kind of a "grep" for vm-names`,
 		}
 
 		ShowSSH, _ := rootCmd.Flags().GetBool("ssh")
-		fmt.Println("ssh: ", ShowSSH)
 
 		for _, project := range matches {
 			fmt.Printf("Project: %s, Query: %s\n", project, query)
