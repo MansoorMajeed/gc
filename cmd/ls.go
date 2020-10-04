@@ -39,9 +39,11 @@ func checkIfFoundPreviously(previousMatch bool, str string, substr string) bool 
 	return (previousMatch || strings.Contains(str, substr))
 }
 
-func readFromJSONAndDisplay(project string, f string, q string, ssh bool) {
+func readFromJSONAndDisplay(project string, f string, q string) {
 	// if q is empty, display all. Otherwise
 	// display only what is matching it
+
+	ShowSSH, _ := rootCmd.Flags().GetBool("ssh")
 
 	type AccessConfigs struct {
 		Natip string `json:"natIP"`
@@ -105,7 +107,7 @@ func readFromJSONAndDisplay(project string, f string, q string, ssh bool) {
 
 		matched := fuzzy.Find(q, []string{i.Name, i.Status, networks, internalAddresses, externalAddresses})
 		if len(matched) > 0 {
-			if ssh {
+			if ShowSSH {
 				fmt.Printf("gcloud compute ssh %s@%s --project %s --zone %s\n", os.Getenv("USER"), i.Name, project, zone)
 			} else {
 				fmt.Fprintf(w, "%s\t%s\t%s\t%s\t%s\t%s\t%s\n", i.Name, i.Status, networks, internalAddresses, externalAddresses, zone, tags)
@@ -156,14 +158,12 @@ Explanation: Fuzzy finds the project name and then "db1" in the name, internal/e
 			query = args[1]
 		}
 
-		ShowSSH, _ := rootCmd.Flags().GetBool("ssh")
-
 		for _, project := range matches {
 			fmt.Printf("Project: %s, Query: %s\n", project, query)
 			jsonPath := project + ".json"
 			projInfoFile := filepath.Join(home, ".gc_data", jsonPath)
 			fmt.Println(projInfoFile)
-			readFromJSONAndDisplay(project, projInfoFile, query, ShowSSH)
+			readFromJSONAndDisplay(project, projInfoFile, query)
 		}
 	},
 }
