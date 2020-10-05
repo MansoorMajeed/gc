@@ -14,7 +14,7 @@ var cfgFile string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "gc",
+	Use:   "gcq",
 	Short: "Offline Gcloud",
 	Long: `A simple tool to query google cloud VMs offline and quick.
 This tool fetches all the information about all the VMs in projects you choose
@@ -37,7 +37,7 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(initConfig)
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.gc.yaml)")
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.gcq.yaml)")
 	rootCmd.PersistentFlags().String("project", "", "Name of the project")
 }
 
@@ -56,7 +56,7 @@ func initConfig() {
 
 		// Search config in home directory with name ".gc" (without extension).
 		viper.AddConfigPath(home)
-		viper.SetConfigName(".gc")
+		viper.SetConfigName(".gcq")
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match
