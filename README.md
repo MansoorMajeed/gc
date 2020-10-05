@@ -14,7 +14,22 @@ is not very efficient. And add the convenience of fuzzy finding to it
 
 You can download the binaries from the [release page](https://github.com/MansoorMajeed/gcq/releases)
 
-Or you can build
+### Linux
+
+```
+wget https://github.com/MansoorMajeed/gcq/releases/latest/download/gcq-amd64-linux
+sudo mv gcq-amd64-linux /usr/local/bin/gcq
+```
+
+### MacOS
+
+```
+wget https://github.com/MansoorMajeed/gcq/releases/latest/download/gcq-amd64-osx
+sudo mv gcq-amd64-osx /usr/local/bin/gcq
+
+```
+
+### Build yourself
 
 ```
 git clone https://github.com/MansoorMajeed/gcq.git
