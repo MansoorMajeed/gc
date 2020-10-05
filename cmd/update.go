@@ -65,7 +65,7 @@ var updateCmd = &cobra.Command{
 about the VMs. By default it updates all projects.
 Update only a project by using --project`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("update called")
+		fmt.Println("Updating project information")
 
 		// Read the projects from the config file
 		proj, _ := rootCmd.Flags().GetString("project")
