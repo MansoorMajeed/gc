@@ -1,4 +1,4 @@
-module github.com/mansoormajeed/gc
+module github.com/mansoormajeed/gcq
 
 go 1.13
 

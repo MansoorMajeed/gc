@@ -15,7 +15,7 @@ limitations under the License.
 */
 package main
 
-import "github.com/mansoormajeed/gc/cmd"
+import "github.com/mansoormajeed/gcq/cmd"
 
 func main() {
 	cmd.Execute()
