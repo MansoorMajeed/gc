@@ -1,6 +1,6 @@
 # Offline Gcloud Wrapper
 
-This is a simple tool to query Google Cloud to fetch information about VirtualMachines
+This is a simple CLI tool based on [cobra](https://github.com/spf13/cobra) to query Google Cloud to fetch information about VirtualMachines
 and store it locally to have offline and quick access to it.
 
 
@@ -38,8 +38,12 @@ go build
 sudo mv gcq /usr/local/bin/gcq
 ```
 
+## Requirements
+
+You should have `gcloud` installed and configured
 
 ## How to use
+
 
 Create `~/.gcq.yaml` config file with projects you want to track
 
