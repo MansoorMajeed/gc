@@ -100,7 +100,7 @@ func readFromJSONAndDisplay(project string, f string, q string) {
 			}
 		}
 
-		tags := strings.Join(i.Tags.Items[:], ",")
+		// tags := strings.Join(i.Tags.Items[:], ",")
 		externalAddresses := strings.Join(externalAddrArr[:], ",")
 		internalAddresses := strings.Join(internalAddrArr[:], ",")
 		networks := strings.Join(networksArr[:], ",")
@@ -110,7 +110,7 @@ func readFromJSONAndDisplay(project string, f string, q string) {
 			if ShowSSH {
 				fmt.Printf("gcloud compute ssh %s@%s --project %s --zone %s\n", os.Getenv("USER"), i.Name, project, zone)
 			} else {
-				fmt.Fprintf(w, "%s\t%s\t%s\t%s\t%s\t%s\t%s\n", i.Name, i.Status, networks, internalAddresses, externalAddresses, zone, tags)
+				fmt.Fprintf(w, "%s\t%s\t%s\t%s\t%s\t%s\n", i.Name, i.Status, networks, internalAddresses, externalAddresses, zone)
 			}
 		}
 	}
